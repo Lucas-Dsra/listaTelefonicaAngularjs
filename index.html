@@ -21,18 +21,27 @@
                 <tr>
                     <th>Nome</th>
                     <th>Telefone</th>
+                    <th>Operadora</th>
+
                 </tr>
             <tr ng-repeat="contato in contatos">
                 <td>{{contato.name}}</td>
                 <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.name}}</td>
+
             </tr>
         </table>
+        <select title="selecione a operadora" name="Operadoras" ng-model="contato.operadora" 
+        ng-options="operadora.name group by operadora.categoria for operadora in operadoras" >
+            <option value="">Selecione uma operadora</option>
+        </select>
+        {{contato}}
         <hr>
-    <div>
-        <input type="text" ng-model="contato.name" placeholder="nome"/>
-        <input type="text" ng-model="contato.telefone" placeholder="telefone"/>
-        <button ng-click="adicionarContatos(contato)">Adicionar Contato</button>
-    </div>
+        <div>
+            <input type="text" ng-model="contato.name" placeholder="nome"/>
+            <input type="text" ng-model="contato.telefone" placeholder="telefone"/>
+            <button ng-click="adicionarContatos(contato)" ng-disabled="!contato.name || !contato.telefone">Adicionar Contato</button>
+        </div>
     </div>
     
 </body>
