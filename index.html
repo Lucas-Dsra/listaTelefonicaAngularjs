@@ -16,19 +16,26 @@
         {{message}}
     </div>
     <div ng-controller="listaTelefonicaCtrl" class="central">
+
         <h1 class="appTitle">{{name}}</h1>
+
         <table class="tableContatos">
+
                 <tr>
+                    <th></th>
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Operadora</th>
-
                 </tr>
-            <tr ng-repeat="contato in contatos">
+
+            <tr ng-class="{selecionado: contato.selecionado}" ng-repeat="contato in contatos">
+
+                <td>
+                    <input type="checkbox" title="selecione"  ng-model="contato.selecionado"/>
+                </td>
                 <td>{{contato.name}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.name}}</td>
-
             </tr>
         </table>
         <select title="selecione a operadora" name="Operadoras" ng-model="contato.operadora" 
@@ -41,6 +48,8 @@
             <input type="text" ng-model="contato.name" placeholder="nome"/>
             <input type="text" ng-model="contato.telefone" placeholder="telefone"/>
             <button ng-click="adicionarContatos(contato)" ng-disabled="!contato.name || !contato.telefone">Adicionar Contato</button>
+            <button ng-click="apagarContatos(contatos)" ng-disabled="isContatoSelecionado(contatos)">Apagar contatos</button>
+            {{contatos}}
         </div>
     </div>
     

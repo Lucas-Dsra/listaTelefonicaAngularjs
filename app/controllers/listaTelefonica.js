@@ -7,12 +7,13 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($sc
         {name: "Emerson", telefone:  "9487561986"},
         {name: "Gabigol", telefone:  "947561986"},
     ];
+    
     $scope.operadoras = [
         {name : "oi", codigo: 14, categoria: "Celular"},
         {name : "Tim", codigo: 41,  categoria: "Celular"},
         {name : "Vivo", codigo: 15,  categoria: "Celular"},
         {name : "Claro", codigo: 21, categoria: "Celular"},
-        {name : "Assantet", codigo: 51, categoria: "Fixo"},
+        {name : "Assantet", codigo: 51, categoria: "Fixo"}
 
 
     ]
@@ -29,6 +30,14 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function($sc
         $scope.contatos.push(angular.copy(contato))
         delete $scope.contato;
 
+    }
+
+    $scope.apagarContatos = function(contatos){
+          $scope.contatos = contatos.filter(contatos => !contatos.selecionado)
+    }
+    $scope.isContatoSelecionado = function(contatos){
+        let isContatoSelecionado = contatos.some(contatos => contatos.selecionado)
+        return !isContatoSelecionado;
     }
 
 });

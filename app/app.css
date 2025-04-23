@@ -10,6 +10,11 @@
     text-align: center;
 }
 
+.selecionado{
+    background-color:rgb(114, 114, 114);
+    color: white;
+}
+
 .central{
     display: flex;
     justify-content: center;
@@ -34,7 +39,6 @@
     width: 200px;
     margin: auto;
     background-color: coral;
-
     color: white;
 
 }
@@ -46,6 +50,3 @@
 
 }
 
-.tableContatos  tr:nth-child(even) {
-    background-color: #f2f2f2
-}
